@@ -11,13 +11,13 @@ Requirements
 
 ### Platform:
 
-This cookbook is used in conjuction with [https://github.com/newmediadenver/drupal-lamp.git]nedmediadenver/drupal-lamp.git.
+This cookbook is used in conjuction with https://github.com/newmediadenver/drupal-lamp.git .
 Other uses have NOT been formally tested, but submit a pull request. It could be
 fun.
 
 ### Cookbooks:
 
-This cookbook depends on [https://github.com/newmediadenver/drupal.git]newmediadenver/drupal.git.
+This cookbook depends on https://github.com/newmediadenver/drupal.git.
 
 To Use
 ------
