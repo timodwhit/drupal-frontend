@@ -11,13 +11,13 @@ Requirements
 
 ### Platform:
 
-This cookbook is used in conjuction with [https://github.com/newmediadenver/drupal-lamp.git]nedmediadenver/drupal-lamp.git.
+This cookbook is used in conjuction with https://github.com/newmediadenver/drupal-lamp.git .
 Other uses have NOT been formally tested, but submit a pull request. It could be
 fun.
 
 ### Cookbooks:
 
-This cookbook depends on [https://github.com/newmediadenver/drupal.git]newmediadenver/drupal.git.
+This cookbook depends on https://github.com/newmediadenver/drupal.git.
 
 To Use
 ------
@@ -29,26 +29,27 @@ Recipes
 This allows for automatic compilation of scss/sass to css using ruby gems, other
 ruby specific settings should work.
 
-Add this below the drupal site, that you would like to use.
+Add this to your drupal_lamp.json that you would like to use.
 
 ```
 "drupal-frontend": {
-  "default": {
     "css_preprocessor": {
-      // Relative to the docroot
-      "location": "profiles/jref/themes/jref_bare",
-      // Ruby gems needed to compile
-      "gems": [
-        "bundler"
-      ],
-      // Commands to run so install can occur.
-      "commands": [
-        "bundle install && bundle update",
-        "bundle exec compass compile"
-      ]
+      // Path to file
+      "/srv/www/site_name/current/profiles/test/themes/test_bare":{
+        // Ruby gems needed to compile
+        "gems": [
+          "bundler"
+        ],
+        // Commands to run so install can occur.
+        "commands": [
+          "bundle install && bundle update",
+          "bundle exec compass compile"
+        ]
+      }
     }
   }
 },
+```
 
 ### Drupal-frontend::bundler
 ### Drupal-frontend::nodejs (Coming soon)
