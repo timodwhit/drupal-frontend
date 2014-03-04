@@ -24,9 +24,9 @@ node[:drupal_frontend][:css_preprocessor].each do |site_name, site|
   #Use a CSS Preprocessor
   csspre = site
   location = site_name
-  Chef::Log.debug('drupal-frontend::default: before_restart: site[:drupal-frontend][:default][:css_preprocessor]' + csspre.inspect)
+  Chef::Log.debug('drupal-frontend::default: node[:drupal-frontend][:css_preprocessor]' + csspre.inspect)
   # Install each gem
-  Chef::Log.debug('drupal-frontend::default: before_restart: site[:drupal-frontend][:default][:css_preprocessor][:gems]' + csspre[:gems].inspect)
+  Chef::Log.debug('drupal-frontend::default: node[:drupal-frontend][:css_preprocessor][:gems]' + csspre[:gems].inspect)
   csspre[:gems].each do |g|
     gem_package g do
       not_if 'gem list | grep #{g}'
