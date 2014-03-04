@@ -11,24 +11,48 @@ Requirements
 
 ### Platform:
 
-This cookbook is used in conjuction with git@github.com:cyberswat/drupal-lamp.git.
+This cookbook is used in conjuction with nedmediadenver/drupal-lamp.git.
 Other uses have NOT been formally tested, but submit a pull request. It could be
 fun.
 
 ### Cookbooks:
 
-This cookbook depends on git@github.com:cyberswat/drupal.git.
+This cookbook depends on newmediadenver/drupal.git.
 
 Attributes
 ----------
 
 Recipes
 -------
+### Drupal-frontend::default (Default Functionality)
+This allows for automatic compilation of scss/sass to css using ruby gems, other
+ruby specific settings should work.
+
+Add this below the drupal site, that you would like to use.
+
+```
+"drupal-frontend": {
+  "default": {
+    "css_preprocessor": {
+      // Relative to the docroot
+      "location": "profiles/jref/themes/jref_bare",
+      // Ruby gems needed to compile
+      "gems": [
+        "bundler"
+      ],
+      // Commands to run so install can occur.
+      "commands": [
+        "bundle install && bundle update",
+        "bundle exec compass compile"
+      ]
+    }
+  }
+},
 
 ### Drupal-frontend::bundler
-### Drupal-frontend::drush
-### Drupal-frontend::nodejs
-### Drupal-frontend::grunt
+### Drupal-frontend::nodejs (Coming soon)
+### Drupal-frontend::grunt (Coming soon)
+
 
 
 License and Author
