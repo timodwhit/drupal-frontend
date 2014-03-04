@@ -49,6 +49,7 @@ Add this below the drupal site, that you would like to use.
     }
   }
 },
+```
 
 ### Drupal-frontend::bundler
 ### Drupal-frontend::nodejs (Coming soon)
