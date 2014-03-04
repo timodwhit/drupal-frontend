@@ -11,16 +11,17 @@ Requirements
 
 ### Platform:
 
-This cookbook is used in conjuction with nedmediadenver/drupal-lamp.git.
+This cookbook is used in conjuction with [https://github.com/newmediadenver/drupal-lamp.git]nedmediadenver/drupal-lamp.git.
 Other uses have NOT been formally tested, but submit a pull request. It could be
 fun.
 
 ### Cookbooks:
 
-This cookbook depends on newmediadenver/drupal.git.
+This cookbook depends on [https://github.com/newmediadenver/drupal.git]newmediadenver/drupal.git.
 
-Attributes
-----------
+To Use
+------
+Add this recipe to the END of the run list in drupal-lamp/chef/roles/drupal_lamp.rb.
 
 Recipes
 -------
