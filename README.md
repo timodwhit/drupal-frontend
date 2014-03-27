@@ -1,5 +1,7 @@
 Drupal-Frontend
 ===============
+[![Build Status](https://travis-ci.org/timodwhit/drupal-frontend.png?branch=master)](https://travis-ci.org/timodwhit/drupal-frontend)
+
 The purpose of this cookbook is to allow for an automated frontend spin up
 experience to exist.
 
