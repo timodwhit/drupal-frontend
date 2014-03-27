@@ -32,7 +32,7 @@ ruby specific settings should work.
 Add this to your drupal_lamp.json that you would like to use.
 
 ```
-"drupal-frontend": {
+"drupal_frontend": {
     "css_preprocessor": {
       // Path to file
       "/srv/www/site_name/current/profiles/test/themes/test_bare":{
