@@ -35,19 +35,18 @@ Add this to your drupal_lamp.json that you would like to use.
 
 ```
 "drupal_frontend": {
-    "css_preprocessor": {
-      // Path to file
-      "/srv/www/site_name/current/profiles/test/themes/test_bare":{
-        // Ruby gems needed to compile
-        "gems": [
-          "bundler"
-        ],
-        // Commands to run so install can occur.
-        "commands": [
-          "bundle install && bundle update",
-          "bundle exec compass compile"
-        ]
-      }
+  "css_preprocessor": {
+    // Path to file
+    "/srv/www/site_name/current/profiles/test/themes/test_bare":{
+      // Ruby gems needed to compile
+      "gems": [
+        "bundler"
+      ],
+      // Commands to run so install can occur.
+      "commands": [
+        "bundle install && bundle update",
+        "bundle exec compass compile"
+      ]
     }
   }
 },
