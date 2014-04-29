@@ -22,11 +22,17 @@
 # For each site, run the following commands
 unless node[:drupal_frontend].nil?
   unless node[:drupal_frontend][:css_preprocessor].nil?
+    # Install Ruby Gems
+    Chef::Log.debug('drupal-frontend::default: Install Rubygems')
+    apt_package 'rubygems' do
+      action :install # see actions section below
+    end
     node[:drupal_frontend][:css_preprocessor].each do |site_name, site|
       #Use a CSS Preprocessor
       csspre = site
       location = site_name
       Chef::Log.debug('drupal-frontend::default: node[:drupal-frontend][:css_preprocessor]' + csspre.inspect)
+
       # Install each gem
       Chef::Log.debug('drupal-frontend::default: node[:drupal-frontend][:css_preprocessor][:gems]' + csspre[:gems].inspect)
       csspre[:gems].each do |g|
@@ -37,10 +43,10 @@ unless node[:drupal_frontend].nil?
       end
       cmd = ""
       # This allows for the commands to be ran in a single string
-      last = csspre[:commands].last
+      lastCommand = csspre[:commands].last
       Chef::Log.debug('Last '+ last)
       csspre[:commands].each do |c|
-        if c == last
+        if c == lastCommand
           cmd << c
         else
           cmd << c + '; '
