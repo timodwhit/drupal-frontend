@@ -44,7 +44,7 @@ unless node[:drupal_frontend].nil?
       cmd = ""
       # This allows for the commands to be ran in a single string
       lastCommand = csspre[:commands].last
-      Chef::Log.debug('Last '+ last)
+      Chef::Log.debug('Last '+ lastCommand)
       csspre[:commands].each do |c|
         if c == lastCommand
           cmd << c
