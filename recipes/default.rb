@@ -18,15 +18,25 @@
 #
 
 # Install/configure tools for frontend
-
 # For each site, run the following commands
 unless node[:drupal_frontend].nil?
+  if node[:drupal_frontend][:grunt]
+    # Install grunt and grunt-cli
+    cmd = 'npm install -g grunt && npm install -g grunt-cli'
+    bash 'Install Grunt and grunt-cli' do
+      user 'root'
+      code <<-EOH
+        #{cmd}
+      EOH
+    end
+  end
   unless node[:drupal_frontend][:css_preprocessor].nil?
     # Install Ruby Gems
     Chef::Log.debug('drupal-frontend::default: Install Rubygems')
     apt_package 'rubygems' do
       action :install # see actions section below
     end
+
     node[:drupal_frontend][:css_preprocessor].each do |site_name, site|
       #Use a CSS Preprocessor
       csspre = site
