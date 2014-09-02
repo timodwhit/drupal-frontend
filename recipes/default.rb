@@ -38,36 +38,38 @@ unless node[:drupal_frontend].nil?
     end
 
     node[:drupal_frontend][:css_preprocessor].each do |site_name, site|
-      #Use a CSS Preprocessor
-      csspre = site
-      location = site_name
-      Chef::Log.debug('drupal-frontend::default: node[:drupal-frontend][:css_preprocessor]' + csspre.inspect)
+      if site[:active]
+        #Use a CSS Preprocessor
+        csspre = site
+        location = site_name
+        Chef::Log.debug('drupal-frontend::default: node[:drupal-frontend][:css_preprocessor]' + csspre.inspect)
 
-      # Install each gem
-      Chef::Log.debug('drupal-frontend::default: node[:drupal-frontend][:css_preprocessor][:gems]' + csspre[:gems].inspect)
-      csspre[:gems].each do |g|
-        gem_package g do
-          not_if 'gem list | grep #{g}'
-          action :install
+        # Install each gem
+        Chef::Log.debug('drupal-frontend::default: node[:drupal-frontend][:css_preprocessor][:gems]' + csspre[:gems].inspect)
+        csspre[:gems].each do |g|
+          gem_package g do
+            not_if 'gem list | grep #{g}'
+            action :install
+          end
         end
-      end
-      cmd = ""
-      # This allows for the commands to be ran in a single string
-      lastCommand = csspre[:commands].last
-      Chef::Log.debug('Last '+ lastCommand)
-      csspre[:commands].each do |c|
-        if c == lastCommand
-          cmd << c
-        else
-          cmd << c + '; '
+        cmd = ""
+        # This allows for the commands to be ran in a single string
+        lastCommand = csspre[:commands].last
+        Chef::Log.debug('Last '+ lastCommand)
+        csspre[:commands].each do |c|
+          if c == lastCommand
+            cmd << c
+          else
+            cmd << c + '; '
+          end
         end
-      end
-      bash 'compile CSS' do
-        user 'root'
-        cwd location
-        code <<-EOH
-          #{cmd}
-        EOH
+        bash 'compile CSS' do
+          user 'root'
+          cwd location
+          code <<-EOH
+            #{cmd}
+          EOH
+        end
       end
     end
   end
