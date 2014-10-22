@@ -2,4 +2,4 @@ site :opscode
 
 metadata
 
-cookbook 'nodejs', '~>1.3.0'
+cookbook 'nodejs', '~>2.1.0'
