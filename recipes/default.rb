@@ -33,7 +33,7 @@ unless node[:drupal_frontend].nil?
   unless node[:drupal_frontend][:css_preprocessor].nil?
     # Install Ruby Gems
     Chef::Log.debug('drupal-frontend::default: Install Rubygems')
-    apt_package 'rubygems' do
+    apt_package 'rubygems-integration' do
       action :install # see actions section below
     end
 
